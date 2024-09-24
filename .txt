@@ -1,0 +1,10 @@
+Steps to modify code
+
+models
+controller
+validator
+mapper
+services
+domaintypes
+startup/router.ts
+database connector

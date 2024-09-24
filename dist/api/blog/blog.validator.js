@@ -1,0 +1,91 @@
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BlogValidator = void 0;
+const joi_1 = __importDefault(require("joi"));
+const error_handler_1 = require("../../common/error.handler");
+///////////////////////////////////////////////////////////////////////////////////////////////
+class BlogValidator {
+    constructor() {
+        this.validateCreateRequest = (request) => __awaiter(this, void 0, void 0, function* () {
+            var _a, _b, _c, _d, _e, _f;
+            try {
+                const schema = joi_1.default.object({
+                    UserId: joi_1.default.string().uuid().required(),
+                    Title: joi_1.default.string().optional(),
+                    BlogId: joi_1.default.string().optional(),
+                    Tags: joi_1.default.string().optional(),
+                    Published: joi_1.default.boolean().optional(),
+                    Likes: joi_1.default.number().optional(),
+                    Save: joi_1.default.number().optional(),
+                    CommentId: joi_1.default.string().uuid().optional(),
+                });
+                yield schema.validateAsync(request.body);
+                return {
+                    UserId: request.body.UserId,
+                    Title: (_a = request.body.Title) !== null && _a !== void 0 ? _a : null,
+                    BlogId: request.body.BlogId,
+                    Tags: (_b = request.body.Tags) !== null && _b !== void 0 ? _b : null,
+                    Published: (_c = request.body.Published) !== null && _c !== void 0 ? _c : null,
+                    Likes: (_d = request.body.Likes) !== null && _d !== void 0 ? _d : null,
+                    Save: (_e = request.body.Save) !== null && _e !== void 0 ? _e : null,
+                    CommentId: (_f = request.body.CommentId) !== null && _f !== void 0 ? _f : null,
+                };
+            }
+            catch (error) {
+                error_handler_1.ErrorHandler.handleValidationError(error);
+                // return {
+                //   Title: "",
+                //   BlogId: "",
+                //   Tags: "",
+                //   Published: true,
+                //   Likes: 0,
+                //   Save: 0,
+                //   CommentId: "",
+                // };
+            }
+        });
+        this.validateUpdateRequest = (request) => __awaiter(this, void 0, void 0, function* () {
+            var _a, _b, _c, _d, _e, _f, _g;
+            try {
+                const schema = joi_1.default.object({
+                    UserId: joi_1.default.string().uuid().optional(),
+                    Title: joi_1.default.string().optional(),
+                    BlogId: joi_1.default.string().optional(),
+                    Tags: joi_1.default.string().optional(),
+                    Published: joi_1.default.boolean().optional(),
+                    Likes: joi_1.default.number().optional(),
+                    Save: joi_1.default.number().optional(),
+                    CommentId: joi_1.default.string().uuid().optional(),
+                });
+                yield schema.validateAsync(request.body);
+                return {
+                    UserId: request.body.UserId,
+                    Title: (_a = request.body.Title) !== null && _a !== void 0 ? _a : null,
+                    BlogId: (_b = request.body.BlogId) !== null && _b !== void 0 ? _b : null,
+                    Tags: (_c = request.body.Tags) !== null && _c !== void 0 ? _c : null,
+                    Published: (_d = request.body.Published) !== null && _d !== void 0 ? _d : null,
+                    Likes: (_e = request.body.Likes) !== null && _e !== void 0 ? _e : null,
+                    Save: (_f = request.body.Save) !== null && _f !== void 0 ? _f : null,
+                    CommentId: (_g = request.body.CommentId) !== null && _g !== void 0 ? _g : null,
+                };
+            }
+            catch (error) {
+                error_handler_1.ErrorHandler.handleValidationError(error);
+            }
+        });
+    }
+}
+exports.BlogValidator = BlogValidator;
+//# sourceMappingURL=blog.validator.js.map
