@@ -15,6 +15,8 @@ const advertise_model_1 = require("./models/advertise.model");
 const signup_model_1 = require("./models/signup.model");
 const users_model_1 = require("./models/users.model");
 const socialauth_model_1 = require("./models/socialauth.model");
+const roles_model_1 = require("./models/roles.model");
+const userroles_model_1 = require("./models/userroles.model");
 class DatabaseConnector {
 }
 exports.DBConnector = DatabaseConnector;
@@ -39,7 +41,9 @@ DatabaseConnector._source = new typeorm_1.DataSource({
         advertise_model_1.Advertise,
         signup_model_1.SignUp,
         users_model_1.Users,
-        socialauth_model_1.SocialAuth
+        socialauth_model_1.SocialAuth,
+        roles_model_1.Roles,
+        userroles_model_1.UserRoles,
     ],
     migrations: [],
     subscribers: [],

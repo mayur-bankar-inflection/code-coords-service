@@ -11,6 +11,8 @@ import { Advertise } from "./models/advertise.model";
 import { SignUp } from "./models/signup.model";
 import { Users } from "./models/users.model";
 import { SocialAuth } from "./models/socialauth.model";
+import { Roles } from "./models/roles.model";
+import { UserRoles } from "./models/userroles.model";
 
 class DatabaseConnector {
   // private static _source: DataSource | null = null;
@@ -33,7 +35,9 @@ class DatabaseConnector {
       Advertise,
       SignUp,
       Users,
-      SocialAuth
+      SocialAuth,
+      Roles,
+      UserRoles,
     ],
     migrations: [],
     subscribers: [],

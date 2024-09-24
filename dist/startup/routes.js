@@ -20,6 +20,8 @@ const advertise_router_1 = require("../api/advertise/advertise.router");
 const signup_router_1 = require("../api/signup/signup.router");
 const users_router_1 = require("../api/users/users.router");
 const socialauth_router_1 = require("../api/socialauth/socialauth.router");
+const roles_router_1 = require("../api/roles/roles.router");
+const userroles_router_1 = require("../api/userroles/userroles.router");
 ///////////////////////////////////////////////////////////////////////////////////////
 class Router {
     constructor(app) {
@@ -29,6 +31,8 @@ class Router {
                     this._app.get("/api/v1", (req, res) => {
                         res.send({ message: "Demo api service" });
                     });
+                    (0, userroles_router_1.register)(this._app);
+                    (0, roles_router_1.register)(this._app);
                     (0, socialauth_router_1.register)(this._app);
                     (0, users_router_1.register)(this._app);
                     (0, signup_router_1.register)(this._app);

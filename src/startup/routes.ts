@@ -9,6 +9,8 @@ import { register as advertise } from "../api/advertise/advertise.router";
 import { register as signup } from "../api/signup/signup.router";
 import { register as users } from "../api/users/users.router";
 import { register as socialauth } from "../api/socialauth/socialauth.router";
+import { register as roles } from "../api/roles/roles.router";
+import { register as userroles } from "../api/userroles/userroles.router";
 ///////////////////////////////////////////////////////////////////////////////////////
 
 export class Router {
@@ -23,6 +25,8 @@ export class Router {
         this._app.get("/api/v1", (req, res) => {
           res.send({ message: "Demo api service" });
         });
+        userroles(this._app);
+        roles(this._app);
         socialauth(this._app);
         users(this._app);
         signup(this._app);
