@@ -1,18 +1,13 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { Config } from "./database.config";
-import { Blog } from "./models/blog.model";
-import { User } from "./models/user.model";
-import { Draft } from "./models/draft.model";
-import { Comments } from "./models/comments.model";
-import { AdvertiserDashboard } from "./models/advertiserdashboard.model";
-import { Reviews } from "./models/reviews.model";
-import { Advertise } from "./models/advertise.model";
-import { SignUp } from "./models/signup.model";
+
 import { Users } from "./models/users.model";
 import { SocialAuth } from "./models/socialauth.model";
 import { Roles } from "./models/roles.model";
 import { UserRoles } from "./models/userroles.model";
+import { Permissions } from "./models/permissions.model";
+import { RolePermissions } from "./models/rolepermissions.model";
 
 class DatabaseConnector {
   // private static _source: DataSource | null = null;
@@ -26,18 +21,12 @@ class DatabaseConnector {
     database: Config.database,
     synchronize: true,
     entities: [
-      Blog,
-      User,
-      Comments,
-      Draft,
-      AdvertiserDashboard,
-      Reviews,
-      Advertise,
-      SignUp,
       Users,
       SocialAuth,
       Roles,
       UserRoles,
+      Permissions,
+      RolePermissions,
     ],
     migrations: [],
     subscribers: [],

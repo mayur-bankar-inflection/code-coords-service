@@ -5,18 +5,12 @@ exports.Source = exports.DBConnector = void 0;
 require("reflect-metadata");
 const typeorm_1 = require("typeorm");
 const database_config_1 = require("./database.config");
-const blog_model_1 = require("./models/blog.model");
-const user_model_1 = require("./models/user.model");
-const draft_model_1 = require("./models/draft.model");
-const comments_model_1 = require("./models/comments.model");
-const advertiserdashboard_model_1 = require("./models/advertiserdashboard.model");
-const reviews_model_1 = require("./models/reviews.model");
-const advertise_model_1 = require("./models/advertise.model");
-const signup_model_1 = require("./models/signup.model");
 const users_model_1 = require("./models/users.model");
 const socialauth_model_1 = require("./models/socialauth.model");
 const roles_model_1 = require("./models/roles.model");
 const userroles_model_1 = require("./models/userroles.model");
+const permissions_model_1 = require("./models/permissions.model");
+const rolepermissions_model_1 = require("./models/rolepermissions.model");
 class DatabaseConnector {
 }
 exports.DBConnector = DatabaseConnector;
@@ -32,18 +26,12 @@ DatabaseConnector._source = new typeorm_1.DataSource({
     database: database_config_1.Config.database,
     synchronize: true,
     entities: [
-        blog_model_1.Blog,
-        user_model_1.User,
-        comments_model_1.Comments,
-        draft_model_1.Draft,
-        advertiserdashboard_model_1.AdvertiserDashboard,
-        reviews_model_1.Reviews,
-        advertise_model_1.Advertise,
-        signup_model_1.SignUp,
         users_model_1.Users,
         socialauth_model_1.SocialAuth,
         roles_model_1.Roles,
         userroles_model_1.UserRoles,
+        permissions_model_1.Permissions,
+        rolepermissions_model_1.RolePermissions,
     ],
     migrations: [],
     subscribers: [],
