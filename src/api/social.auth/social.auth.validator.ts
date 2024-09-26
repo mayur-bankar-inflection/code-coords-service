@@ -4,7 +4,7 @@ import { ErrorHandler } from "../../common/error.handler";
 import {
   SocialAuthCreateModel,
   SocialAuthUpdateModel,
-} from "../../domain.types/socialauth.domain.types";
+} from "../../domain.types/social.auth.domain.types";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 

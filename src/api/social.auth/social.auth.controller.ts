@@ -2,23 +2,22 @@ import express from "express";
 import { ResponseHandler } from "../../common/response.handler";
 import { ErrorHandler } from "../../common/error.handler";
 import { error } from "console";
-import { RolePermissionsValidator } from "./rolepermissions.validator";
-import { RolePermissionsService } from "../../database/services/rolepermissions.service";
+import { SocialAuthValidator } from "./social.auth.validator";
+import { SocialAuthService } from "../../database/services/social.auth.service";
 import {
-  RolePermissionsCreateModel,
-  RolePermissionsUpdateModel,
-} from "../../domain.types/rolepermissions.domain.types";
-import joi from "joi"
+  SocialAuthCreateModel,
+  SocialAuthUpdateModel,
+} from "../../domain.types/social.auth.domain.types";
+import joi from "joi";
 ///////////////////////////////////////////////////////////////////////////////////////
 type uuid = string | undefined | null;
 
-
-export class RolePermissionsController {
+export class SocialAuthController {
   //#region member variables and constructors
 
-  _service: RolePermissionsService = new RolePermissionsService();
+  _service: SocialAuthService = new SocialAuthService();
 
-  _validator: RolePermissionsValidator = new RolePermissionsValidator();
+  _validator: SocialAuthValidator = new SocialAuthValidator();
 
   constructor() {}
 
@@ -26,14 +25,14 @@ export class RolePermissionsController {
 
   getAll = async (request: express.Request, response: express.Response) => {
     try {
-      const record = await this._service.allRolePermissions();
+      const record = await this._service.allSocialAuth();
       if (record === null) {
         ErrorHandler.throwInternalServerError(
-          "Unable to Load all RolePermissions!",
+          "Unable to Load all SocialAuth!",
           error
         );
       }
-      const message = "All RolePermissions retrived successfully!";
+      const message = "All SocialAuth retrived successfully!";
       return ResponseHandler.success(request, response, message, 201, record);
     } catch (error) {
       ResponseHandler.handleError(request, response, error);
@@ -42,17 +41,17 @@ export class RolePermissionsController {
 
   create = async (request: express.Request, response: express.Response) => {
     try {
-      const model: RolePermissionsCreateModel =
+      const model: SocialAuthCreateModel =
         await this._validator.validateCreateRequest(request);
 
       const record = await this._service.create(model);
       if (record === null) {
         ErrorHandler.throwInternalServerError(
-          "Unable to add RolePermissions !",
+          "Unable to add SocialAuth !",
           error
         );
       }
-      const message = "RolePermissions added successfully!";
+      const message = "SocialAuth added successfully!";
       return ResponseHandler.success(request, response, message, 201, record);
     } catch (error) {
       ResponseHandler.handleError(request, response, error);
@@ -75,11 +74,10 @@ export class RolePermissionsController {
     try {
       // await this.authorize('Form.Update', request, response);
       const id = await this.validateParamAsUUID(request, "id");
-      var model: RolePermissionsUpdateModel = await this._validator.validateUpdateRequest(
-        request
-      );
+      var model: SocialAuthUpdateModel =
+        await this._validator.validateUpdateRequest(request);
       const updatedRecord = await this._service.update(id, model);
-      const message = "RolePermissions updated successfully!";
+      const message = "SocialAuth updated successfully!";
       ResponseHandler.success(request, response, message, 200, updatedRecord);
     } catch (error) {
       ResponseHandler.handleError(request, response, error);
@@ -94,7 +92,7 @@ export class RolePermissionsController {
       // await this.authorize('Form.Delete', request, response);
       var id: uuid = await this.validateParamAsUUID(request, "id");
       const result = await this._service.delete(id);
-      const message = "RolePermissions deleted successfully!";
+      const message = "SocialAuth deleted successfully!";
       ResponseHandler.success(request, response, message, 200, result);
     } catch (error) {
       ResponseHandler.handleError(request, response, error);

@@ -1,4 +1,4 @@
-import { ProviderEnum } from "../database/models/socialauth.model";
+import { ProviderEnum } from "../database/models/social.auth.model";
 
 export interface SocialAuthCreateModel {
   UserId:string;

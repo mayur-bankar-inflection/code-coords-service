@@ -2,22 +2,23 @@ import express from "express";
 import { ResponseHandler } from "../../common/response.handler";
 import { ErrorHandler } from "../../common/error.handler";
 import { error } from "console";
-import { UserRolesValidator } from "./userroles.validator";
-import { UserRolesService } from "../../database/services/userroles.service";
+import { RolePermissionsValidator } from "./role.permissions.validator";
+import { RolePermissionsService } from "../../database/services/role.permissions.service";
 import {
-  UserRolesCreateModel,
-  UserRolesUpdateModel,
-} from "../../domain.types/userroles.domain.types";
-import joi from "joi";
+  RolePermissionsCreateModel,
+  RolePermissionsUpdateModel,
+} from "../../domain.types/role.permissions.domain.types";
+import joi from "joi"
 ///////////////////////////////////////////////////////////////////////////////////////
 type uuid = string | undefined | null;
 
-export class UserRolesController {
+
+export class RolePermissionsController {
   //#region member variables and constructors
 
-  _service: UserRolesService = new UserRolesService();
+  _service: RolePermissionsService = new RolePermissionsService();
 
-  _validator: UserRolesValidator = new UserRolesValidator();
+  _validator: RolePermissionsValidator = new RolePermissionsValidator();
 
   constructor() {}
 
@@ -25,14 +26,14 @@ export class UserRolesController {
 
   getAll = async (request: express.Request, response: express.Response) => {
     try {
-      const record = await this._service.allUserRoles();
+      const record = await this._service.allRolePermissions();
       if (record === null) {
         ErrorHandler.throwInternalServerError(
-          "Unable to Load all UserRoles!",
+          "Unable to Load all RolePermissions!",
           error
         );
       }
-      const message = "All UserRoles retrived successfully!";
+      const message = "All RolePermissions retrived successfully!";
       return ResponseHandler.success(request, response, message, 201, record);
     } catch (error) {
       ResponseHandler.handleError(request, response, error);
@@ -41,14 +42,17 @@ export class UserRolesController {
 
   create = async (request: express.Request, response: express.Response) => {
     try {
-      const model: UserRolesCreateModel =
+      const model: RolePermissionsCreateModel =
         await this._validator.validateCreateRequest(request);
 
       const record = await this._service.create(model);
       if (record === null) {
-        ErrorHandler.throwInternalServerError("Unable to add UserRoles !", error);
+        ErrorHandler.throwInternalServerError(
+          "Unable to add RolePermissions !",
+          error
+        );
       }
-      const message = "UserRoles added successfully!";
+      const message = "RolePermissions added successfully!";
       return ResponseHandler.success(request, response, message, 201, record);
     } catch (error) {
       ResponseHandler.handleError(request, response, error);
@@ -71,11 +75,11 @@ export class UserRolesController {
     try {
       // await this.authorize('Form.Update', request, response);
       const id = await this.validateParamAsUUID(request, "id");
-      var model: UserRolesUpdateModel = await this._validator.validateUpdateRequest(
+      var model: RolePermissionsUpdateModel = await this._validator.validateUpdateRequest(
         request
       );
       const updatedRecord = await this._service.update(id, model);
-      const message = "UserRoles updated successfully!";
+      const message = "RolePermissions updated successfully!";
       ResponseHandler.success(request, response, message, 200, updatedRecord);
     } catch (error) {
       ResponseHandler.handleError(request, response, error);
@@ -90,7 +94,7 @@ export class UserRolesController {
       // await this.authorize('Form.Delete', request, response);
       var id: uuid = await this.validateParamAsUUID(request, "id");
       const result = await this._service.delete(id);
-      const message = "UserRoles deleted successfully!";
+      const message = "RolePermissions deleted successfully!";
       ResponseHandler.success(request, response, message, 200, result);
     } catch (error) {
       ResponseHandler.handleError(request, response, error);

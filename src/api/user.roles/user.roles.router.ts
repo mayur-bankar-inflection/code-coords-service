@@ -1,5 +1,5 @@
 import express from "express";
-import { UserRolesController } from "./userroles.controller";
+import { UserRolesController } from "./user.roles.controller";
 
 ///////////////////////////////////////////////////////////////////////////////////
 

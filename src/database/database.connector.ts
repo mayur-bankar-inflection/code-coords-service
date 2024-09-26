@@ -3,11 +3,11 @@ import { DataSource } from "typeorm";
 import { Config } from "./database.config";
 
 import { Users } from "./models/users.model";
-import { SocialAuth } from "./models/socialauth.model";
+import { SocialAuth } from "./models/social.auth.model";
 import { Roles } from "./models/roles.model";
-import { UserRoles } from "./models/userroles.model";
+import { UserRoles } from "./models/user.roles.model";
 import { Permissions } from "./models/permissions.model";
-import { RolePermissions } from "./models/rolepermissions.model";
+import { RolePermissions } from "./models/role.permissions.model";
 
 class DatabaseConnector {
   // private static _source: DataSource | null = null;

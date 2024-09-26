@@ -1,5 +1,5 @@
 import express from "express";
-import { RolePermissionsController } from "./rolepermissions.controller"
+import { RolePermissionsController } from "./role.permissions.controller"
 
 ///////////////////////////////////////////////////////////////////////////////////
 

@@ -1,5 +1,5 @@
-import { RolePermissionsResponseDto } from "../../domain.types/rolepermissions.domain.types";
-import { RolePermissions } from "../models/rolepermissions.model";
+import { RolePermissionsResponseDto } from "../../domain.types/role.permissions.domain.types";
+import { RolePermissions } from "../models/role.permissions.model";
 
 export class RolePermissionsMapper {
   static toDto = (record: RolePermissions): RolePermissionsResponseDto => {

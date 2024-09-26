@@ -1,5 +1,5 @@
 import express from "express";
-import { SocialAuthController } from "./socialauth.controller";
+import { SocialAuthController } from "./social.auth.controller";
 
 ///////////////////////////////////////////////////////////////////////////////////
 

@@ -1,12 +1,12 @@
-import { RolePermissionsMapper } from "../mappers/rolepermissions.mapper";
+import { RolePermissionsMapper } from "../mappers/role.permissions.mapper";
 import {
   RolePermissionsCreateModel,
   RolePermissionsResponseDto,
   RolePermissionsUpdateModel,
-} from "../../domain.types/rolepermissions.domain.types";
+} from "../../domain.types/role.permissions.domain.types";
 import { Source } from "../database.connector";
 import { Repository } from "typeorm";
-import { RolePermissions } from "../models/rolepermissions.model";
+import { RolePermissions } from "../models/role.permissions.model";
 import { ErrorHandler } from "../../common/error.handler";
 
 /////////////////////////////////////////////////////////////////////////////////

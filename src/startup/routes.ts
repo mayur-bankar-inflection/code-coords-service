@@ -1,10 +1,10 @@
 import express from "express";
 import { register as users } from "../api/users/users.router";
-import { register as socialauth } from "../api/socialauth/socialauth.router";
+import { register as socialauth } from "../api/social.auth/social.auth.router";
 import { register as roles } from "../api/roles/roles.router";
-import { register as userroles } from "../api/userroles/userroles.router";
+import { register as userroles } from "../api/user.roles/user.roles.router";
 import { register as permissions } from "../api/permissions/permissions.router";
-import { register as rolepermissions } from "../api/rolepermissions/rolepermissions.router";
+import { register as rolepermissions } from "../api/role.permissions/role.permissions.router";
 
 ///////////////////////////////////////////////////////////////////////////////////////
 

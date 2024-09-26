@@ -1,5 +1,5 @@
-import { UserRolesResponseDto } from "../../domain.types/userroles.domain.types";
-import { UserRoles } from "../models/userroles.model";
+import { UserRolesResponseDto } from "../../domain.types/user.roles.domain.types";
+import { UserRoles } from "../models/user.roles.model";
 
 export class UserRolesMapper {
   static toDto = (record: UserRoles): UserRolesResponseDto => {

@@ -6,11 +6,11 @@ require("reflect-metadata");
 const typeorm_1 = require("typeorm");
 const database_config_1 = require("./database.config");
 const users_model_1 = require("./models/users.model");
-const socialauth_model_1 = require("./models/socialauth.model");
+const social_auth_model_1 = require("./models/social.auth.model");
 const roles_model_1 = require("./models/roles.model");
-const userroles_model_1 = require("./models/userroles.model");
+const user_roles_model_1 = require("./models/user.roles.model");
 const permissions_model_1 = require("./models/permissions.model");
-const rolepermissions_model_1 = require("./models/rolepermissions.model");
+const role_permissions_model_1 = require("./models/role.permissions.model");
 class DatabaseConnector {
 }
 exports.DBConnector = DatabaseConnector;
@@ -27,11 +27,11 @@ DatabaseConnector._source = new typeorm_1.DataSource({
     synchronize: true,
     entities: [
         users_model_1.Users,
-        socialauth_model_1.SocialAuth,
+        social_auth_model_1.SocialAuth,
         roles_model_1.Roles,
-        userroles_model_1.UserRoles,
+        user_roles_model_1.UserRoles,
         permissions_model_1.Permissions,
-        rolepermissions_model_1.RolePermissions,
+        role_permissions_model_1.RolePermissions,
     ],
     migrations: [],
     subscribers: [],

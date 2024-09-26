@@ -11,11 +11,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Router = void 0;
 const users_router_1 = require("../api/users/users.router");
-const socialauth_router_1 = require("../api/socialauth/socialauth.router");
+const social_auth_router_1 = require("../api/social.auth/social.auth.router");
 const roles_router_1 = require("../api/roles/roles.router");
-const userroles_router_1 = require("../api/userroles/userroles.router");
+const user_roles_router_1 = require("../api/user.roles/user.roles.router");
 const permissions_router_1 = require("../api/permissions/permissions.router");
-const rolepermissions_router_1 = require("../api/rolepermissions/rolepermissions.router");
+const role_permissions_router_1 = require("../api/role.permissions/role.permissions.router");
 ///////////////////////////////////////////////////////////////////////////////////////
 class Router {
     constructor(app) {
@@ -25,11 +25,11 @@ class Router {
                     this._app.get("/api/v1", (req, res) => {
                         res.send({ message: "Demo api service" });
                     });
-                    (0, rolepermissions_router_1.register)(this._app);
+                    (0, role_permissions_router_1.register)(this._app);
                     (0, permissions_router_1.register)(this._app);
-                    (0, userroles_router_1.register)(this._app);
+                    (0, user_roles_router_1.register)(this._app);
                     (0, roles_router_1.register)(this._app);
-                    (0, socialauth_router_1.register)(this._app);
+                    (0, social_auth_router_1.register)(this._app);
                     (0, users_router_1.register)(this._app);
                 }
                 catch (error) {

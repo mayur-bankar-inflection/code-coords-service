@@ -2,22 +2,22 @@ import express from "express";
 import { ResponseHandler } from "../../common/response.handler";
 import { ErrorHandler } from "../../common/error.handler";
 import { error } from "console";
-import { SocialAuthValidator } from "./socialauth.validator";
-import { SocialAuthService } from "../../database/services/socialauth.service";
+import { UserRolesValidator } from "./user.roles.validator";
+import { UserRolesService } from "../../database/services/user.roles.service";
 import {
-  SocialAuthCreateModel,
-  SocialAuthUpdateModel,
-} from "../../domain.types/socialauth.domain.types";
+  UserRolesCreateModel,
+  UserRolesUpdateModel,
+} from "../../domain.types/user.roles.domain.types";
 import joi from "joi";
 ///////////////////////////////////////////////////////////////////////////////////////
 type uuid = string | undefined | null;
 
-export class SocialAuthController {
+export class UserRolesController {
   //#region member variables and constructors
 
-  _service: SocialAuthService = new SocialAuthService();
+  _service: UserRolesService = new UserRolesService();
 
-  _validator: SocialAuthValidator = new SocialAuthValidator();
+  _validator: UserRolesValidator = new UserRolesValidator();
 
   constructor() {}
 
@@ -25,14 +25,14 @@ export class SocialAuthController {
 
   getAll = async (request: express.Request, response: express.Response) => {
     try {
-      const record = await this._service.allSocialAuth();
+      const record = await this._service.allUserRoles();
       if (record === null) {
         ErrorHandler.throwInternalServerError(
-          "Unable to Load all SocialAuth!",
+          "Unable to Load all UserRoles!",
           error
         );
       }
-      const message = "All SocialAuth retrived successfully!";
+      const message = "All UserRoles retrived successfully!";
       return ResponseHandler.success(request, response, message, 201, record);
     } catch (error) {
       ResponseHandler.handleError(request, response, error);
@@ -41,17 +41,14 @@ export class SocialAuthController {
 
   create = async (request: express.Request, response: express.Response) => {
     try {
-      const model: SocialAuthCreateModel =
+      const model: UserRolesCreateModel =
         await this._validator.validateCreateRequest(request);
 
       const record = await this._service.create(model);
       if (record === null) {
-        ErrorHandler.throwInternalServerError(
-          "Unable to add SocialAuth !",
-          error
-        );
+        ErrorHandler.throwInternalServerError("Unable to add UserRoles !", error);
       }
-      const message = "SocialAuth added successfully!";
+      const message = "UserRoles added successfully!";
       return ResponseHandler.success(request, response, message, 201, record);
     } catch (error) {
       ResponseHandler.handleError(request, response, error);
@@ -74,10 +71,11 @@ export class SocialAuthController {
     try {
       // await this.authorize('Form.Update', request, response);
       const id = await this.validateParamAsUUID(request, "id");
-      var model: SocialAuthUpdateModel =
-        await this._validator.validateUpdateRequest(request);
+      var model: UserRolesUpdateModel = await this._validator.validateUpdateRequest(
+        request
+      );
       const updatedRecord = await this._service.update(id, model);
-      const message = "SocialAuth updated successfully!";
+      const message = "UserRoles updated successfully!";
       ResponseHandler.success(request, response, message, 200, updatedRecord);
     } catch (error) {
       ResponseHandler.handleError(request, response, error);
@@ -92,7 +90,7 @@ export class SocialAuthController {
       // await this.authorize('Form.Delete', request, response);
       var id: uuid = await this.validateParamAsUUID(request, "id");
       const result = await this._service.delete(id);
-      const message = "SocialAuth deleted successfully!";
+      const message = "UserRoles deleted successfully!";
       ResponseHandler.success(request, response, message, 200, result);
     } catch (error) {
       ResponseHandler.handleError(request, response, error);

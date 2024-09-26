@@ -1,5 +1,5 @@
-import { SocialAuthResponseDto } from "../../domain.types/socialauth.domain.types";
-import { SocialAuth } from "../models/socialauth.model";
+import { SocialAuthResponseDto } from "../../domain.types/social.auth.domain.types";
+import { SocialAuth } from "../models/social.auth.model";
 
 export class SocialAuthMapper {
   static toDto = (record: SocialAuth): SocialAuthResponseDto => {

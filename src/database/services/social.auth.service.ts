@@ -1,12 +1,12 @@
-import { SocialAuthMapper } from "../mappers/socialauth.mapper";
+import { SocialAuthMapper } from "../mappers/social.auth.mapper";
 import {
   SocialAuthCreateModel,
   SocialAuthResponseDto,
   SocialAuthUpdateModel,
-} from "../../domain.types/socialauth.domain.types";
+} from "../../domain.types/social.auth.domain.types";
 import { Source } from "../database.connector";
 import { Repository } from "typeorm";
-import { SocialAuth } from "../models/socialauth.model";
+import { SocialAuth } from "../models/social.auth.model";
 import { ErrorHandler } from "../../common/error.handler";
 
 /////////////////////////////////////////////////////////////////////////////////

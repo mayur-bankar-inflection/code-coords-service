@@ -2,25 +2,27 @@ import joi, { optional } from "joi";
 import express from "express";
 import { ErrorHandler } from "../../common/error.handler";
 import {
-  UserRolesCreateModel,
-  UserRolesUpdateModel,
-} from "../../domain.types/userroles.domain.types";
+  RolePermissionsCreateModel,
+  RolePermissionsUpdateModel,
+} from "../../domain.types/role.permissions.domain.types";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
-export class UserRolesValidator {
+export class RolePermissionsValidator {
   public validateCreateRequest = async (
     request: express.Request
-  ): Promise<UserRolesCreateModel> => {
+  ): Promise<RolePermissionsCreateModel> => {
     try {
       const schema = joi.object({
         UserId: joi.string().optional(),
         RoleId: joi.string().optional(),
+        PermissionsId: joi.string().optional(),
       });
       await schema.validateAsync(request.body);
       return {
-        UserId: request.body.RoleName ?? null,
-        RoleId: request.body.Description ?? null,
+        UserId: request.body.UserId ?? null,
+        RoleId: request.body.RoleId ?? null,
+        PermissionId: request.body.PermissionId ?? null,
       };
     } catch (error) {
       ErrorHandler.handleValidationError(error);
@@ -29,16 +31,18 @@ export class UserRolesValidator {
 
   public validateUpdateRequest = async (
     request: express.Request
-  ): Promise<UserRolesUpdateModel | undefined> => {
+  ): Promise<RolePermissionsUpdateModel | undefined> => {
     try {
       const schema = joi.object({
         UserId: joi.string().optional(),
         RoleId: joi.string().optional(),
+        PermissionsId: joi.string().optional(),
       });
       await schema.validateAsync(request.body);
       return {
-        UserId: request.body.RoleName ?? null,
-        RoleId: request.body.Description ?? null,
+        UserId: request.body.UserId ?? null,
+        RoleId: request.body.RoleId ?? null,
+        PermissionId: request.body.PermissionId ?? null,
       };
     } catch (error) {
       ErrorHandler.handleValidationError(error);

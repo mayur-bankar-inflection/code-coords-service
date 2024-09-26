@@ -1,12 +1,12 @@
-import { UserRolesMapper } from "../mappers/userroles.mapper";
+import { UserRolesMapper } from "../mappers/user.roles.mapper";
 import {
   UserRolesCreateModel,
   UserRolesResponseDto,
   UserRolesUpdateModel,
-} from "../../domain.types/userroles.domain.types";
+} from "../../domain.types/user.roles.domain.types";
 import { Source } from "../database.connector";
 import { Repository } from "typeorm";
-import { UserRoles } from "../models/userroles.model";
+import { UserRoles } from "../models/user.roles.model";
 import { ErrorHandler } from "../../common/error.handler";
 
 /////////////////////////////////////////////////////////////////////////////////
